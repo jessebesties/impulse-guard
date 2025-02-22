@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdf1ab06-001b-4079-bc65-7f1363735ca5" name="Changes" comment="deleting unesscary photos">
+    <list default="true" id="11acab09-86ac-4cab-aaef-dab8ee4593e7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/google cloud provided facial recgonition/face_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/google cloud provided facial recgonition/face_detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/google cloud provided facial recgonition/output_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/google cloud provided facial recgonition/output_asianpeople.png" beforeDir="false" afterPath="$PROJECT_DIR$/google cloud provided facial recgonition/output_asianpeople.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/google cloud provided facial recgonition/output_img.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/take_save_photo_webcam.py" beforeDir="false" afterPath="$PROJECT_DIR$/take_save_photo_webcam.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,81 +15,59 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
+        <option value="Flask Main" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;jessebesties&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/jessebesties/hacklytics_25.git&quot;,
-    &quot;accountId&quot;: &quot;99eb518d-5e24-41ea-899e-61fe7bdac1ec&quot;
-  }
-}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2tNXH6Pj09zmuYIV4S7G6javYaQ" />
+  <component name="ProjectId" id="2tNq4xRwYFwAYiM8KUuqjsO73w7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.app.executor": "Run",
-    "Python.face_detection.executor": "Run",
-    "Python.openaiapi.executor": "Run",
-    "Python.take_save_photo_webcam.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/jesse/Documents/GitHub/hacklytics_25",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Flask server.hacklytics_25.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/images" />
+      <recent name="$PROJECT_DIR$/templates" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="hacklytics_25" type="Python.FlaskServer">
       <module name="hacklytics_25" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flask" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_NAME" value="Python 3.12 (mysite)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flask/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.app" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -108,109 +80,21 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cdf1ab06-001b-4079-bc65-7f1363735ca5" name="Changes" comment="" />
-      <created>1740193414804</created>
+      <changelist id="11acab09-86ac-4cab-aaef-dab8ee4593e7" name="Changes" comment="" />
+      <created>1740202692483</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1740193414804</updated>
-      <workItem from="1740193415953" duration="2182000" />
-      <workItem from="1740195633283" duration="6185000" />
-      <workItem from="1740203173811" duration="3611000" />
-      <workItem from="1740207011150" duration="41000" />
-      <workItem from="1740207053988" duration="28000" />
-      <workItem from="1740207362263" duration="2857000" />
+      <updated>1740202692483</updated>
+      <workItem from="1740202693523" duration="4624000" />
+      <workItem from="1740207704497" duration="598000" />
+      <workItem from="1740209896765" duration="1330000" />
     </task>
-    <task id="LOCAL-00001" summary="openai keys">
-      <option name="closed" value="true" />
-      <created>1740200353503</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1740200353503</updated>
-    </task>
-    <task id="LOCAL-00002" summary="some face things">
-      <option name="closed" value="true" />
-      <created>1740203680680</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1740203680680</updated>
-    </task>
-    <task id="LOCAL-00003" summary="some face things">
-      <option name="closed" value="true" />
-      <created>1740203730818</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1740203730818</updated>
-    </task>
-    <task id="LOCAL-00004" summary="some face things">
-      <option name="closed" value="true" />
-      <created>1740203884025</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1740203884025</updated>
-    </task>
-    <task id="LOCAL-00005" summary="update">
-      <option name="closed" value="true" />
-      <created>1740205745273</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1740205745273</updated>
-    </task>
-    <task id="LOCAL-00006" summary="update, enabled cropping">
-      <option name="closed" value="true" />
-      <created>1740207593184</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1740207593184</updated>
-    </task>
-    <task id="LOCAL-00007" summary="made cropped image name to be more approiate">
-      <option name="closed" value="true" />
-      <created>1740207724471</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1740207724471</updated>
-    </task>
-    <task id="LOCAL-00008" summary="made cropped image name to be more approiate">
-      <option name="closed" value="true" />
-      <created>1740207774633</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1740207774633</updated>
-    </task>
-    <task id="LOCAL-00009" summary="deleting unesscary photos">
-      <option name="closed" value="true" />
-      <created>1740207814966</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1740207814966</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="openai keys" />
-    <MESSAGE value="some face things" />
-    <MESSAGE value="update" />
-    <MESSAGE value="update, enabled cropping" />
-    <MESSAGE value="made cropped image name to be more approiate" />
-    <MESSAGE value="deleting unesscary photos" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleting unesscary photos" />
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/hacklytics_25$openaiapi.coverage" NAME="openaiapi Coverage Results" MODIFIED="1740196076453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hacklytics_25$take_save_photo_webcam.coverage" NAME="take_save_photo_webcam Coverage Results" MODIFIED="1740238511634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hacklytics_25$app.coverage" NAME="app Coverage Results" MODIFIED="1740211009323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask" />
-    <SUITE FILE_PATH="coverage/hacklytics_25$face_detection.coverage" NAME="face_detection Coverage Results" MODIFIED="1740211060987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/google cloud provided facial recgonition" />
+    <SUITE FILE_PATH="coverage/hacklytics_25$hacklytics_25.coverage" NAME="hacklytics_25 Coverage Results" MODIFIED="1740204396811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
