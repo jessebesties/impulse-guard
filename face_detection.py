@@ -24,3 +24,5 @@ def highlight_faces(image, faces, output_filename):
             fill="#FF0000",
         )
     im.save(output_filename)
+
+highlight_faces()
