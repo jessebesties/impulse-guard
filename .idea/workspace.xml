@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11acab09-86ac-4cab-aaef-dab8ee4593e7" name="Changes" comment="added camera capturing">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="11acab09-86ac-4cab-aaef-dab8ee4593e7" name="Changes" comment="implemented main.py for entire face detecting sequence">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/google cloud provided facial recgonition/output_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/google cloud provided facial recgonition/output_asianpeople.png" beforeDir="false" afterPath="$PROJECT_DIR$/google cloud provided facial recgonition/output_asianpeople.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/google cloud provided facial recgonition/output_img.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/take_save_photo_webcam.py" beforeDir="false" afterPath="$PROJECT_DIR$/take_save_photo_webcam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,20 +32,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Flask server.hacklytics_25.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Flask server.hacklytics_25.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/static/images" />
@@ -96,6 +92,23 @@
       <workItem from="1740207704497" duration="598000" />
       <workItem from="1740209896765" duration="1330000" />
     </task>
+    <task id="LOCAL-00001" summary="change of folder name for gc face recgonition">
+      <option name="closed" value="true" />
+      <created>1740239295987</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740239295987</updated>
+    </task>
+    <task id="LOCAL-00002" summary="implemented main.py for entire face detecting sequence">
+      <option name="closed" value="true" />
+      <created>1740239505128</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740239505128</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,7 +116,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added camera capturing" />
-    <option name="LAST_COMMIT_MESSAGE" value="added camera capturing" />
+    <MESSAGE value="change of folder name for gc face recgonition" />
+    <MESSAGE value="implemented main.py for entire face detecting sequence" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented main.py for entire face detecting sequence" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/hacklytics_25$openaiapi.coverage" NAME="openaiapi Coverage Results" MODIFIED="1740196076453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -111,5 +126,6 @@
     <SUITE FILE_PATH="coverage/hacklytics_25$app.coverage" NAME="app Coverage Results" MODIFIED="1740211009323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask" />
     <SUITE FILE_PATH="coverage/hacklytics_25$hacklytics_25.coverage" NAME="hacklytics_25 Coverage Results" MODIFIED="1740204396811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hacklytics_25$face_detection.coverage" NAME="face_detection Coverage Results" MODIFIED="1740211060987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/google cloud provided facial recgonition" />
+    <SUITE FILE_PATH="coverage/hacklytics_25$main.coverage" NAME="main Coverage Results" MODIFIED="1740240504074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
