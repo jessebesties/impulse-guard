@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
+from google.cloud import vision
 
 def detect_faces(source_file, max_results=999):
-    from google.cloud import vision
     client = vision.ImageAnnotatorClient()
 
     content = source_file.read()
@@ -31,4 +31,4 @@ def detect_and_box_faces(input_filename, output_filename, max_results):
         image.seek(0)
         highlight_faces(image, faces, output_filename)
 
-detect_and_box_faces("pictureofpeople.png", "output.png", 5)
+detect_and_box_faces("img.jpeg", "output.png", 5)
