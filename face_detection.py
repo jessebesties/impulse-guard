@@ -25,10 +25,10 @@ def highlight_faces(image, faces, output_filename):
         )
     im.save(output_filename)
 
-def detect_and_box_faces(input_filename, output_filename, max_results):
+def detect_and_box_faces(input_filename, max_results):
     with open(input_filename, "rb") as image:
         faces = detect_faces(image, max_results)
         image.seek(0)
-        highlight_faces(image, faces, output_filename)
+        highlight_faces(image, faces, "output_" + input_filename)
 
-detect_and_box_faces("pictureofpeople.png", "output.png", 5)
+detect_and_box_faces("asianpeople.png", 999)
