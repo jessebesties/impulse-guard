@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .purchase-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .purchase-btn:hover {
+            background-color: #0056b3;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 50%;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .modal button {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .yes-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+        .no-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+        .success-message {
+            display: none;
+            color: green;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Best Sunscreen</h1>
+        <img src="{{ url_for('static', filename='images/item.jpg') }}" alt="Product Image">
+        <button class="purchase-btn" onclick="showFirstPopup()">Purchase</button>
+        <p id="successMessage" class="success-message">
+            Successfully stopped the user from making an irrational purchase.
+        </p>
+    </div>
+
+    <!-- First pop-up -->
+    <div id="firstModal" class="modal">
+        <div class="modal-content">
+            <h2>We detected you might be experiencing irrational emotions.</h2>
+            <p>Do you still want to make the purchase?</p>
+            <button class="yes-btn" onclick="showFinalPopup()">Yes</button>
+            <button class="no-btn" onclick="cancelPurchase()">No</button>
+        </div>
+    </div>
+
+    <!-- Second pop-up -->
+    <div id="finalModal" class="modal">
+        <div class="modal-content">
+            <h2>Are you sure?</h2>
+            <button class="yes-btn" onclick="redirectToSuccess()">Yes</button>
+            <button class="no-btn" onclick="cancelPurchase()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function showFirstPopup() {
+            document.getElementById("firstModal").style.display = "block";
+        }
+
+        function showFinalPopup() {
+            document.getElementById("firstModal").style.display = "none";
+            document.getElementById("finalModal").style.display = "block";
+        }
+
+        function redirectToSuccess() {
+            window.location.href = "/success"; // Redirect to the success page
+        }
+
+        function cancelPurchase() {
+            document.getElementById("firstModal").style.display = "none";
+            document.getElementById("finalModal").style.display = "none";
+
+            let successMessage = document.getElementById("successMessage");
+            successMessage.style.display = "block";
+
+            // Hide the success message after 2 seconds
+            setTimeout(() => {
+                successMessage.style.display = "none";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
