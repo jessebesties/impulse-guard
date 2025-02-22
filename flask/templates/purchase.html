@@ -87,7 +87,7 @@
 <body>
 
     <div class="video-container">
-        <img src="{{ url_for('video_feed') }}" alt="Live Video Feed" style="width:100%; max-width:400px; border-radius:10px; margin-bottom:20px;">
+        <!-- <img src="{{ url_for('video_feed') }}" alt="Live Video Feed" style="width:100%; max-width:400px; border-radius:10px; margin-bottom:20px;"> -->
     </div>
 
     <div class="container">
@@ -104,6 +104,7 @@
         <div class="modal-content">
             <h2>We detected you might be experiencing irrational emotions.</h2>
             <p>Do you still want to make the purchase?</p>
+            <p id="emotion">Before</p>
             <button class="yes-btn" onclick="showFinalPopup()">Yes</button>
             <button class="no-btn" onclick="cancelPurchase()">No</button>
         </div>
@@ -120,6 +121,16 @@
 
     <script>
         function showFirstPopup() {
+            console.log("Fetching data...");
+            fetch("/get_emotion")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("emotion").innerText = data.emotion;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("emotion").innerText = "Failed to fetch data.";
+            });
             document.getElementById("firstModal").style.display = "block";
         }
 

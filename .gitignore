@@ -7,5 +7,5 @@ facial-emotion-model/raw-data/*
 *.pth
 
 flask/images/*.jpg
-flask/images-cropped/*.jpg
+flask/images-cropped/*.png
 flask/images-drawn/*.jpg

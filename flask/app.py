@@ -1,6 +1,6 @@
 import time
 import threading
-from flask import Flask, render_template, Response, send_file, request
+from flask import Flask, render_template, Response, send_file, request, jsonify
 
 import cv2
 from datetime import datetime
@@ -24,6 +24,8 @@ app = Flask(__name__)
 
 # Connect to Client
 client = vision.ImageAnnotatorClient()
+
+camera = cv2.VideoCapture(0)
 
 # Load Model
 # Load the model architecture
@@ -59,13 +61,18 @@ def video_feed():
     except:
         pass
 
+@app.route('/get_emotion')
+def get_emotion():
+    return jsonify({
+        "emotion": detect_and_box_faces(take_save_photo_webcam(), 1, 1)
+    })
+
 @app.route('/photo_feed')
 def capture_photo():
     # while True:
         print("Capturing photo...")
         try:
-            output_path = take_save_photo_webcam()
-            detect_and_box_faces(output_path, 1, 1)
+            detect_and_box_faces(take_save_photo_webcam(), 1, 1)
         except Exception as e:
             print("Error: ", e)
         print("Done...")
@@ -155,6 +162,7 @@ def crop_faces(image_path, faces):
     
     # Crop Faces
     cropped_images = []
+    print(faces)
     for i, face in enumerate(faces):
         xs = [vertex.x for vertex in face.bounding_poly.vertices]
         ys = [vertex.y for vertex in face.bounding_poly.vertices]
@@ -189,14 +197,16 @@ def detect_and_box_faces(input_filename, max_results, activate_crop):
     if activate_crop:
         cropped_filename = crop_faces(input_filename, faces.face_annotations)
         
-    pytorch_vgg_inference(cropped_filename)
+    predicted_label = pytorch_vgg_inference(cropped_filename)
     
-    os.remove(input_filename)
+    # os.remove(input_filename)
 
-    os.remove(os.path.join('images-drawn', file_name))
+    # os.remove(os.path.join('images-drawn', file_name))
 
-    base_name, _ = os.path.splitext(os.path.basename(input_filename))
-    os.remove(os.path.join('images-cropped', cropped_filename))
+    # base_name, _ = os.path.splitext(os.path.basename(input_filename))
+    # os.remove(os.path.join('images-cropped', cropped_filename))
+    
+    return predicted_label
     
 
 def take_save_photo_webcam():
@@ -212,8 +222,6 @@ def take_save_photo_webcam():
     now = datetime.now()
 
     formatted_date_time = now.strftime("%Y-%m-%d %H_%M_%S")
-    
-    camera = cv2.VideoCapture(0)
 
     if not camera.isOpened():
         raise IOError("Could not open webcam")
@@ -228,8 +236,6 @@ def take_save_photo_webcam():
     camera.release()
     
 def generate_display_frames():
-    camera = cv2.VideoCapture(0)
-    
     while True:
         success, frame = camera.read()
         if not success:
@@ -285,11 +291,13 @@ def pytorch_vgg_inference(file_name):
     # Print the result
     print(f"Predicted class: {predicted_label}")
     print(f"Probabilities: {probabilities}")
+    
+    return predicted_label
 
 # ---------------------------- Helper Functions ---------------------------- #
 
 if __name__ == '__main__':
-    photo_thread = threading.Thread(target=capture_photo, daemon=True)
-    photo_thread.start()
+    # photo_thread = threading.Thread(target=capture_photo, daemon=True)
+    # photo_thread.start()
 
     app.run(debug=True)
