@@ -6,4 +6,4 @@ def take_picture_webcam():
     if webcam_output:
         face_detection.detect_and_box_faces(webcam_output, 1, 1)
 
-face_detection.detect_and_box_faces("pictureofpeople.png", 999, 1)
+face_detection.detect_and_box_faces("img.jpeg", 1, 1)

@@ -1,0 +1,26 @@
+Index: flask/app.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask import Flask, render_template\r\n\r\napp = Flask(__name__)\r\n\r\n@app.route('/')\r\ndef purchase():\r\n    return render_template('purchase.html')\r\n\r\n@app.route('/success')\r\ndef success():\r\n    return render_template('success.html')\r\n\r\nif __name__ == '__main__':\r\n    app.run(debug=True)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/flask/app.py b/flask/app.py
+--- a/flask/app.py	(revision 52b9d0fca7dcdc0b28c75e3589439146875493d5)
++++ b/flask/app.py	(date 1740209387410)
+@@ -1,4 +1,4 @@
+-from flask import Flask, render_template
++from flask import Flask, render_template, Response
+ 
+ app = Flask(__name__)
+ 
+@@ -10,5 +10,9 @@
+ def success():
+     return render_template('success.html')
+ 
++@app.route('/video_feed')
++def video_feed():
++    return
++
+ if __name__ == '__main__':
+     app.run(debug=True)
