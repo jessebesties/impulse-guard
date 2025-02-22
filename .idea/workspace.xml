@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11acab09-86ac-4cab-aaef-dab8ee4593e7" name="Changes" comment="implemented main.py for entire face detecting sequence">
+    <list default="true" id="11acab09-86ac-4cab-aaef-dab8ee4593e7" name="Changes" comment="some refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask/templates/purchase.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask/templates/purchase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcp_face_recognition/asianpeople.png" beforeDir="false" afterPath="$PROJECT_DIR$/input_images/asianpeople.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcp_face_recognition/face_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/gcp_face_recognition/face_detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcp_face_recognition/img.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/input_images/img.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcp_face_recognition/output_asianpeople.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gcp_face_recognition/pictureofpeople.png" beforeDir="false" afterPath="$PROJECT_DIR$/input_images/pictureofpeople.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcam/live_video_feed.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcam/live_video_feed.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +43,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Flask server.hacklytics_25.executor": "Run",
+    "JavaScript Debug.purchase.html.executor": "Run",
+    "JavaScript Debug.success.html.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.face_detection.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -49,8 +61,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jesse\Documents\GitHub\hacklytics_25" />
+      <recent name="C:\Users\jesse\Documents\GitHub\hacklytics_25\gcp_face_recognition" />
+      <recent name="C:\Users\jesse\Documents\GitHub\hacklytics_25\input_images" />
+      <recent name="C:\Users\jesse\Documents\GitHub\hacklytics_25\webcam" />
       <recent name="$PROJECT_DIR$/static/images" />
-      <recent name="$PROJECT_DIR$/templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -108,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740239505128</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="some refactoring">
+      <option name="closed" value="true" />
+      <created>1740241073013</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740241073013</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,14 +141,15 @@
     <MESSAGE value="added camera capturing" />
     <MESSAGE value="change of folder name for gc face recgonition" />
     <MESSAGE value="implemented main.py for entire face detecting sequence" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented main.py for entire face detecting sequence" />
+    <MESSAGE value="some refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="some refactoring" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/hacklytics_25$openaiapi.coverage" NAME="openaiapi Coverage Results" MODIFIED="1740196076453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hacklytics_25$take_save_photo_webcam.coverage" NAME="take_save_photo_webcam Coverage Results" MODIFIED="1740238511634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hacklytics_25$app.coverage" NAME="app Coverage Results" MODIFIED="1740211009323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask" />
     <SUITE FILE_PATH="coverage/hacklytics_25$hacklytics_25.coverage" NAME="hacklytics_25 Coverage Results" MODIFIED="1740204396811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hacklytics_25$face_detection.coverage" NAME="face_detection Coverage Results" MODIFIED="1740211060987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/google cloud provided facial recgonition" />
-    <SUITE FILE_PATH="coverage/hacklytics_25$main.coverage" NAME="main Coverage Results" MODIFIED="1740240504074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hacklytics_25$app.coverage" NAME="app Coverage Results" MODIFIED="1740242273928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask" />
+    <SUITE FILE_PATH="coverage/hacklytics_25$face_detection.coverage" NAME="face_detection Coverage Results" MODIFIED="1740243334377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gcp_face_recognition" />
+    <SUITE FILE_PATH="coverage/hacklytics_25$main.coverage" NAME="main Coverage Results" MODIFIED="1740243346974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
