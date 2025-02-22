@@ -15,5 +15,6 @@ def take_save_photo_webcam():
 
     if result:
         cv2.imwrite(formatted_date_time + "webcam.jpg", frame)
+        return formatted_date_time + "webcam.jpg"
 
     camera.release()
