@@ -27,6 +27,9 @@ client = vision.ImageAnnotatorClient()
 
 camera = cv2.VideoCapture(0)
 
+happy = []
+not_happy = []
+
 # Load Model
 # Load the model architecture
 vgg16 = models.vgg16(weights=models.VGG16_Weights.DEFAULT)
@@ -63,8 +66,10 @@ def video_feed():
 
 @app.route('/get_emotion')
 def get_emotion():
+    emotion, is_happy = detect_and_box_faces(take_save_photo_webcam(), 1, 1)
     return jsonify({
-        "emotion": detect_and_box_faces(take_save_photo_webcam(), 1, 1)
+        "emotion": emotion,
+        "gcp_emotion": "Happy" if is_happy else "Not happy",
     })
 
 @app.route('/photo_feed')
@@ -191,7 +196,19 @@ def detect_and_box_faces(input_filename, max_results, activate_crop):
     """
     with open(input_filename, "rb") as image_file:
         faces = detect_faces(image_file, max_results)
-        # print("Face Annotations!!!: ", faces.face_annotations[0])
+        
+        happy.append(faces.face_annotations[0].joy_likelihood * 2)
+        not_happy.append(faces.face_annotations[0].sorrow_likelihood + faces.face_annotations[0].anger_likelihood)
+        average_happy = sum(happy) / len(happy) * 1.25
+        average_not_happy = sum(not_happy) / len(not_happy)
+
+        print("current happy: ", happy)
+        print("current not_happy: ", not_happy)
+        print("average happy * 1.25: ", average_happy)
+        print("average not_happy: ", average_not_happy)
+        print("happier? ", average_happy > average_not_happy)
+        is_happy = happy[-1] > not_happy[-1]
+        
     file_name = input_filename.split('/')[-1]
     highlight_faces(input_filename, faces.face_annotations, file_name)
     if activate_crop:
@@ -206,7 +223,7 @@ def detect_and_box_faces(input_filename, max_results, activate_crop):
     # base_name, _ = os.path.splitext(os.path.basename(input_filename))
     # os.remove(os.path.join('images-cropped', cropped_filename))
     
-    return predicted_label
+    return predicted_label, is_happy
     
 
 def take_save_photo_webcam():

@@ -105,6 +105,7 @@
             <h2>We detected you might be experiencing irrational emotions.</h2>
             <p>Do you still want to make the purchase?</p>
             <p id="emotion">Before</p>
+            <p id="gcp_emotion">gcp_emotion</p>
             <button class="yes-btn" onclick="showFinalPopup()">Yes</button>
             <button class="no-btn" onclick="cancelPurchase()">No</button>
         </div>
@@ -126,6 +127,7 @@
             .then(response => response.json())
             .then(data => {
                 document.getElementById("emotion").innerText = data.emotion;
+                document.getElementById("gcp_emotion").innerText = data.gcp_emotion;
             })
             .catch(error => {
                 console.error("Error:", error);
