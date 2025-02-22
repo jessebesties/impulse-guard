@@ -1,0 +1,3 @@
+import take_save_photo_webcam
+
+take_save_photo_webcam.take_save_photo_webcam()
