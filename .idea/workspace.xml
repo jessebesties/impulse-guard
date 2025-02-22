@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdf1ab06-001b-4079-bc65-7f1363735ca5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asianpeople.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/face_detection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/openaiapi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_asianpeople.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictureofpeople.png" beforeDir="false" />
-    </list>
+    <list default="true" id="cdf1ab06-001b-4079-bc65-7f1363735ca5" name="Changes" comment="update, enabled cropping" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +78,7 @@
       <workItem from="1740203173811" duration="3611000" />
       <workItem from="1740207011150" duration="41000" />
       <workItem from="1740207053988" duration="28000" />
-      <workItem from="1740207362263" duration="196000" />
+      <workItem from="1740207362263" duration="338000" />
     </task>
     <task id="LOCAL-00001" summary="openai keys">
       <option name="closed" value="true" />
@@ -135,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740205745273</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update, enabled cropping">
+      <option name="closed" value="true" />
+      <created>1740207593184</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1740207593184</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +138,8 @@
     <MESSAGE value="openai keys" />
     <MESSAGE value="some face things" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update, enabled cropping" />
+    <option name="LAST_COMMIT_MESSAGE" value="update, enabled cropping" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/hacklytics_25$openaiapi.coverage" NAME="openaiapi Coverage Results" MODIFIED="1740196076453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
