@@ -3,3 +3,9 @@ facial-emotion-model/raw-data/*
 *.h5
 
 *.zip
+
+*.pth
+
+flask/images/*.jpg
+flask/images-cropped/*.jpg
+flask/images-drawn/*.jpg

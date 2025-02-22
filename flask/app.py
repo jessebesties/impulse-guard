@@ -8,10 +8,40 @@ import os
 from google.cloud import vision
 from PIL import Image, ImageDraw
 
+import torch
+import torch.nn.functional as F
+from torchvision import models, transforms
+import torch.nn as nn
+
+from keras.preprocessing import image
+import numpy as np
+import matplotlib.pyplot as plt
+
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 app = Flask(__name__)
 
 # Connect to Client
 client = vision.ImageAnnotatorClient()
+
+# Load Model
+# Load the model architecture
+vgg16 = models.vgg16(weights=models.VGG16_Weights.DEFAULT)
+vgg16.classifier = nn.Sequential(
+    nn.Linear(25088, 4096),  # VGG16's original FC layer
+    nn.ReLU(inplace=True),
+    nn.Dropout(p=0.5),
+    nn.Linear(4096, 4096),   # VGG16's original FC layer
+    nn.ReLU(inplace=True),
+    nn.Dropout(p=0.5),
+    nn.Linear(4096, 7)      # New output layer for 9 classes
+)
+
+# Load the fine-tuned weights
+vgg16.load_state_dict(torch.load('vgg16_finetuned_pytorch.pth', map_location=torch.device('cpu')))
+
+vgg16.eval()
 
 @app.route('/')
 def purchase():
@@ -31,15 +61,16 @@ def video_feed():
 
 @app.route('/photo_feed')
 def capture_photo():
-    while True:
+    # while True:
         print("Capturing photo...")
         try:
             output_path = take_save_photo_webcam()
             detect_and_box_faces(output_path, 1, 1)
         except Exception as e:
             print("Error: ", e)
-        print("Sleeping for 5 seconds...")
-        time.sleep(5)
+        print("Done...")
+            
+        # break
 
 # ---------------------------- Helper Functions ---------------------------- #
 
@@ -133,7 +164,9 @@ def crop_faces(image_path, faces):
         cropped_filename = f"{base_name}_cropped_{i}.png"
         cropped_im.save(os.path.join('images-cropped', cropped_filename))
         cropped_images.append(cropped_im)
-    return cropped_images
+        break
+    return cropped_filename
+    # return cropped_images
 
 def detect_and_box_faces(input_filename, max_results, activate_crop):
     """
@@ -150,11 +183,21 @@ def detect_and_box_faces(input_filename, max_results, activate_crop):
     """
     with open(input_filename, "rb") as image_file:
         faces = detect_faces(image_file, max_results)
-        print("Face Annotations!!!: ", faces.face_annotations)
+        # print("Face Annotations!!!: ", faces.face_annotations[0])
     file_name = input_filename.split('/')[-1]
     highlight_faces(input_filename, faces.face_annotations, file_name)
     if activate_crop:
-        crop_faces(input_filename, faces.face_annotations)
+        cropped_filename = crop_faces(input_filename, faces.face_annotations)
+        
+    pytorch_vgg_inference(cropped_filename)
+    
+    os.remove(input_filename)
+
+    os.remove(os.path.join('images-drawn', file_name))
+
+    base_name, _ = os.path.splitext(os.path.basename(input_filename))
+    os.remove(os.path.join('images-cropped', cropped_filename))
+    
 
 def take_save_photo_webcam():
     """
@@ -196,9 +239,53 @@ def generate_display_frames():
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
                 b'webcam_feed: image/jpeg\r\n\r\n' + frame + b'\r\n')
+        break
 
+    camera.release()
 
+def pytorch_vgg_inference(file_name):
+    preprocess = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
     
+    print("Inferencing...")
+
+    # Load and preprocess the image
+    while True:
+        try:
+            image = Image.open(f"./images-cropped/{file_name}")
+            break
+        except Exception as e:
+            print("Error: ", e)
+    print("Image Loaded!")
+    input_tensor = preprocess(image)
+    input_batch = input_tensor.unsqueeze(0)
+    
+    print("Running Inference")
+
+    # Run inference
+    with torch.no_grad():
+        output = vgg16(input_batch)
+        
+    print("Converting to probabilities")
+
+    # Convert output to probabilities (optional)
+    probabilities = F.softmax(output, dim=1)
+
+    # Get the predicted class
+    _, predicted_class = torch.max(output, 1)
+    predicted_class = predicted_class.item()
+
+    # Map the predicted class to a label
+    class_labels = ["afraid", "angry", "disappointed", "happy", "neutral", "sad", "surprised"]
+    predicted_label = class_labels[predicted_class]
+
+    # Print the result
+    print(f"Predicted class: {predicted_label}")
+    print(f"Probabilities: {probabilities}")
+
 # ---------------------------- Helper Functions ---------------------------- #
 
 if __name__ == '__main__':
