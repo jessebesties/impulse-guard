@@ -30,5 +30,19 @@ def detect_and_box_faces(input_filename, max_results):
         faces = detect_faces(image, max_results)
         image.seek(0)
         highlight_faces(image, faces, "output_" + input_filename)
+    crop_faces(input_filename, faces)
+
+def crop_faces(input_filename, faces):
+    im = Image.open(input_filename)
+    cropped_images = []
+    for i, face in enumerate(faces):
+        xs = [vertex.x for vertex in face.bounding_poly.vertices]
+        ys = [vertex.y for vertex in face.bounding_poly.vertices]
+        left, top, right, bottom = min(xs), min(ys), max(xs), max(ys)
+        cropped_im = im.crop((left, top, right, bottom))
+        cropped_filename = f"output_{i}.png"
+        cropped_im.save(cropped_filename)
+        cropped_images.append(cropped_im)
+    return cropped_images
 
 detect_and_box_faces("asianpeople.png", 999)
