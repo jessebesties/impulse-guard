@@ -46,4 +46,4 @@ def crop_faces(input_filename, faces):
         cropped_images.append(cropped_im)
     return cropped_images
 
-detect_and_box_faces("img.jpeg", 999, 1)
+detect_and_box_faces("asianpeople.png", 999, 1)

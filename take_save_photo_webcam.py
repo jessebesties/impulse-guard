@@ -1,13 +1,19 @@
 import cv2
+from datetime import datetime
 
-video_capture = cv2.VideoCapture(0)
+now = datetime.now()
 
-if not video_capture.isOpened():
-    raise IOError("Couldn't open webcam or video")
+formatted_date_time = now.strftime("%Y-%m-%d %H_%M_%S")
 
-ret, frame = video_capture.read()
+camera = cv2.VideoCapture(0)
 
-if not ret:
-    raise IOError("Couldn't capture frame")
+if not camera.isOpened():
+    raise IOError("Could not open webcam")
 
-cv2.imshow("captured_image.jpg", frame)
+result, frame = camera.read()
+
+if result:
+    cv2.imwrite(formatted_date_time + "webcam.jpg", frame)
+
+camera.release()
+
