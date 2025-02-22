@@ -1,0 +1,31 @@
+Index: face_detection.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from PIL import Image, ImageDraw\r\n\r\ndef detect_faces(source_file, max_results=999):\r\n    from google.cloud import vision\r\n    client = vision.ImageAnnotatorClient()\r\n\r\n    content = source_file.read()\r\n    image = vision.Image(content=content)\r\n\r\n    return client.face_detection(image=image, max_results=max_results).face_annotations\r\n\r\ndef highlight_faces(image, faces, output_filename):\r\n    im = Image.open(image)\r\n    draw = ImageDraw.Draw(im)\r\n    for face in faces:\r\n        box = [(vertex.x, vertex.y) for vertex in face.bounding_poly.vertices]\r\n        draw.line(box + [box[0]], width=5, fill=\"#00ff00\")\r\n        draw.text(\r\n            (\r\n                (face.bounding_poly.vertices)[0].x,\r\n                (face.bounding_poly.vertices)[0].y - 30,\r\n            ),\r\n            str(format(face.detection_confidence, \".3f\")) + \"%\",\r\n            fill=\"#FF0000\",\r\n        )\r\n    im.save(output_filename)\r\n\r\ndef detect_and_box_faces(input_filename, max_results):\r\n    with open(input_filename, \"rb\") as image:\r\n        faces = detect_faces(image, max_results)\r\n        image.seek(0)\r\n        highlight_faces(image, faces, \"output_\" + input_filename)\r\n\r\ndetect_and_box_faces(\"asianpeople.png\", 999)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/face_detection.py b/face_detection.py
+--- a/face_detection.py	(revision 73ac937fbd7cbd0a18b49e2bb3de22a3b95f050b)
++++ b/face_detection.py	(date 1740206222688)
+@@ -30,5 +30,19 @@
+         faces = detect_faces(image, max_results)
+         image.seek(0)
+         highlight_faces(image, faces, "output_" + input_filename)
++    crop_faces(input_filename, faces)
++
++def crop_faces(input_filename, faces):
++    im = Image.open(input_filename)
++    cropped_images = []
++    for i, face in enumerate(faces):
++        xs = [vertex.x for vertex in face.bounding_poly.vertices]
++        ys = [vertex.y for vertex in face.bounding_poly.vertices]
++        left, top, right, bottom = min(xs), min(ys), max(xs), max(ys)
++        cropped_im = im.crop((left, top, right, bottom))
++        cropped_filename = f"output_{i}.png"
++        cropped_im.save(cropped_filename)
++        cropped_images.append(cropped_im)
++    return cropped_images
+ 
+ detect_and_box_faces("asianpeople.png", 999)
+\ No newline at end of file

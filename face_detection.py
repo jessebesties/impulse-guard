@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
+from google.cloud import vision
 
 def detect_faces(source_file, max_results=999):
-    from google.cloud import vision
     client = vision.ImageAnnotatorClient()
 
     content = source_file.read()
