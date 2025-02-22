@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdf1ab06-001b-4079-bc65-7f1363735ca5" name="Changes" comment="update" />
+    <list default="true" id="cdf1ab06-001b-4079-bc65-7f1363735ca5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asianpeople.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/face_detection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openaiapi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_asianpeople.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pictureofpeople.png" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,22 +55,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.face_detection.executor&quot;: &quot;Run&quot;,
-    &quot;Python.openaiapi.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jesse/Documents/GitHub/hacklytics_25&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.face_detection.executor": "Run",
+    "Python.openaiapi.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/jesse/Documents/GitHub/hacklytics_25",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -74,7 +90,10 @@
       <updated>1740193414804</updated>
       <workItem from="1740193415953" duration="2182000" />
       <workItem from="1740195633283" duration="6185000" />
-      <workItem from="1740203173811" duration="3324000" />
+      <workItem from="1740203173811" duration="3611000" />
+      <workItem from="1740207011150" duration="41000" />
+      <workItem from="1740207053988" duration="28000" />
+      <workItem from="1740207362263" duration="196000" />
     </task>
     <task id="LOCAL-00001" summary="openai keys">
       <option name="closed" value="true" />
