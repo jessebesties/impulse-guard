@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw
 
 app = Flask(__name__)
 
-# Connect to Cliend
+# Connect to Client
 client = vision.ImageAnnotatorClient()
 
 @app.route('/')
@@ -59,7 +59,6 @@ def detect_faces(image_file, max_results=999):
     Raises:
         google.cloud.vision.exceptions.GoogleAPICallError: If the API call fails.
     """
-    
     # Read Image content
     content = image_file.read()
     
@@ -67,7 +66,9 @@ def detect_faces(image_file, max_results=999):
     image = vision.Image(content=content)
     
     # Detect Faces
-    return client.face_detection(image=image, max_results=max_results)
+    result = client.face_detection(image=image, max_results=max_results)
+    
+    return result
 
 def highlight_faces(image_path, faces, output_filename):
     """
@@ -149,7 +150,6 @@ def detect_and_box_faces(input_filename, max_results, activate_crop):
     """
     with open(input_filename, "rb") as image_file:
         faces = detect_faces(image_file, max_results)
-        print("Result: ", faces)
         print("Face Annotations!!!: ", faces.face_annotations)
     file_name = input_filename.split('/')[-1]
     highlight_faces(input_filename, faces.face_annotations, file_name)
