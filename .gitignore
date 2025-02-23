@@ -3,3 +3,11 @@ facial-emotion-model/raw-data/*
 *.h5
 
 *.zip
+
+*.json
+
+*.jpg
+
+*.png
+
+*.pth

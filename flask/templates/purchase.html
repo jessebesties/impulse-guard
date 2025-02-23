@@ -133,7 +133,7 @@
         const startRecording = async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream, { mimeType: "audio/wav" });
+                mediaRecorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
 
                 recordedChunks = []; // Clear previous recordings
 
@@ -142,10 +142,11 @@
                 };
 
                 mediaRecorder.onstop = async () => {
-                    const audioBlob = new Blob(recordedChunks, { type: "audio/wav" });
+                    console.log("Recording stopped");
+                    const audioBlob = new Blob(recordedChunks, { type: "audio/webm" });
                     recordedChunks = [];  // Reset chunks after stopping
                     const formData = new FormData();
-                    formData.append("audio", audioBlob, "recording.wav");
+                    formData.append("audio", audioBlob, "recording.webm");
 
                     try {
                         const response = await fetch("/upload_audio", {
