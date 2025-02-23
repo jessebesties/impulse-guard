@@ -70,17 +70,14 @@ if not os.path.exists('uploads'):
 def purchase():
     return render_template('purchase.html')
 
-
 @app.route('/success')
 def success():
     return render_template('success.html')
 
-
 @app.route('/video_feed')
 def video_feed():
     try:
-        # return Response(generate_display_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
-        pass
+        return Response(generate_display_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
     except:
         pass
 
@@ -89,7 +86,7 @@ def get_emotion():
     emotion, is_happy = detect_and_box_faces(take_save_photo_webcam(), 1, 1)
     return jsonify({
         "emotion": emotion,
-        "gcp_emotion": "Happy" if is_happy else "Not happy",
+        "gcp_emotion": "Not Stressed" if is_happy else "Potentially Stressed",
     })
 
 @app.route('/photo_feed')
@@ -309,7 +306,6 @@ def generate_display_frames():
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
                 b'webcam_feed: image/jpeg\r\n\r\n' + frame + b'\r\n')
-        break
 
     camera.release()
 
@@ -368,7 +364,10 @@ def predict_emotion(audio_path):
         predicted_class = np.argmax(prediction)
         emotion_labels = ['angry', 'calm', 'fearful', 'happy', 'sad']  # Adjust labels
         predicted_emotion = emotion_labels[predicted_class]
-        return predicted_emotion
+        if predicted_emotion in ['angry', 'fearful', 'sad']:
+            return "Possibly Stressed"
+        else:
+            return "Not Stressed"
     else:
         return None
     

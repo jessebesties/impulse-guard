@@ -15,5 +15,3 @@ flask/images-drawn/*.jpg
 *.jpg
 
 *.png
-
-*.pth

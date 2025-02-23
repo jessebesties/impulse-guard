@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
         <meta charset="UTF-8" />
         <title>Tesla Stock - Very Good Trading Platform</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -244,9 +245,16 @@
                 margin-top: 20px;
                 font-size: 18px;
             }
+
+
         </style>
     </head>
     <body>
+
+        <h1>Live Video Feed</h1>
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" alt="Live Video Feed" style="width:100%; max-width:400px; border-radius:10px; margin-bottom:20px;">
+        </div>
         <header>
             <h1>Very Good Trading Platform</h1>
             <nav>
@@ -380,13 +388,12 @@
                 <!-- First Modal -->
                 <div id="firstModal" class="modal">
                     <div class="modal-content">
-                        <h2>
-                            We detected you might be experiencing irrational
-                            emotions.
+                        <h2 id="determineEmotion">
+                            Determining your emotional state
                         </h2>
-                        <p id="emotion">Before</p>
-                        <p id="gcp_emotion">gcp_emotion</p>
-                        <button class="yes-btn" onclick="showRecordingPopup()">
+                        <!-- <p id="emotion">Before</p> -->
+                        <p id="gcp_emotion"></p>
+                        <button class="yes-btn" id="gcpButton" style="display: none;" onclick="showRecordingPopup()">
                             Yes
                         </button>
                         <button class="no-btn" onclick="cancelPurchase()">
@@ -410,9 +417,9 @@
                         <button class="no-btn" onclick="cancelRecording()">
                             Cancel
                         </button>
-                        <button id="lastConfirmButton" style="visibility: hidden;" onclick="() => {
+                        <button id="lastConfirmButton" style="display: none;" onclick="() => {
                             document.getElementById('recordingModal').style.display = 'none';
-                            document.getElementById('finalModal').style.display = 'block';
+                            document.getElementById('finalModal').style.display = 'inline-block';
                         }">
                             Confirm Buy Stock
                         </button>
@@ -425,10 +432,10 @@
                     <div class="modal-content">
                         <h2>Are you sure?</h2>
                         <button class="yes-btn" onclick="redirectToSuccess()">
-                            Yes
+                            Continue
                         </button>
                         <button class="no-btn" onclick="cancelPurchase()">
-                            No
+                            Return
                         </button>
                     </div>
                     <div class="detail">
@@ -654,6 +661,7 @@
                                     document.getElementById(
                                         "recordingStatus"
                                     ).innerText = data.audio_emotion;
+                                    document.getElementById("lastConfirmButton").style.display = "inline-block";
                                 });
                         } catch (error) {
                             console.error("Error uploading audio:", error);
@@ -695,45 +703,6 @@
                 }
             };
 
-            const uploadRecording = async () => {
-                if (recordedChunks.length === 0) {
-                    alert("No recording available to upload.");
-                    return;
-                }
-
-                const audioBlob = new Blob(recordedChunks, {
-                    type: "audio/wav",
-                });
-                const formData = new FormData();
-                formData.append("audio", audioBlob, "recording.wav");
-
-                try {
-                    const response = await fetch("/upload_audio", {
-                        method: "POST",
-                        body: formData,
-                    });
-
-                    if (response.ok) {
-                        document.getElementById("status").textContent =
-                            "Audio uploaded successfully!";
-                        document.getElementById(
-                            "recordingModal"
-                        ).style.display = "none";
-                        console.log("Response: ", response.ok);
-                        document.getElementById("recordingStatus").innerText =
-                            response.json().predicted_emotion;
-                        document.getElementById("lastConfirmButton").style.visibility = "visible";
-                    } else {
-                        document.getElementById("status").textContent =
-                            "Upload failed.";
-                    }
-                } catch (error) {
-                    console.error("Error uploading audio:", error);
-                    document.getElementById("status").textContent =
-                        "Upload failed.";
-                }
-            };
-
             function cancelRecording() {
                 document.getElementById("recordingModal").style.display =
                     "none";
@@ -759,10 +728,16 @@
                 fetch("/get_emotion")
                     .then((response) => response.json())
                     .then((data) => {
-                        document.getElementById("emotion").innerText =
-                            data.emotion;
+                        // document.getElementById("emotion").innerText =
+                        //     data.emotion;
                         document.getElementById("gcp_emotion").innerText =
                             data.gcp_emotion;
+                        document.getElementById("gcpButton").style.display = "inline-block";
+                        if (data.gcp_emotion === "Not Stressed") {
+                            document.getElementById("determineEmotion").innerText = "You can proceed to buy this!";
+                        } else {
+                            document.getElementById("determineEmotion").innerText = "You may be thinking irrationally. Proceed with caution!";
+                        }
                     })
                     .catch((error) => {
                         console.error("Error:", error);
@@ -770,6 +745,7 @@
                             "Failed to fetch data.";
                     });
                 document.getElementById("firstModal").style.display = "block";
+                
             }
 
             function redirectToSuccess() {
