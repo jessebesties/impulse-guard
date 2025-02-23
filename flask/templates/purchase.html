@@ -1,437 +1,793 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tesla Stock - Very Good Trading Platform</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* Reset & Basic Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f2f2f2;
-      color: #333;
-      line-height: 1.6;
-      text-align: center;
-    }
-    a {
-      text-decoration: none;
-      color: #007bff;
-    }
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tesla Stock - Very Good Trading Platform</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            /* Reset & Basic Styles */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f2f2f2;
+                color: #333;
+                line-height: 1.6;
+                text-align: center;
+            }
+            a {
+                text-decoration: none;
+                color: #007bff;
+            }
 
-    /* Header */
-    header {
-      background-color: #1f3d7a;
-      color: #fff;
-      padding: 15px 20px;
-    }
-    header h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
-    nav ul li a {
-      color: #fff;
-      font-size: 16px;
-    }
+            /* Header */
+            header {
+                background-color: #1f3d7a;
+                color: #fff;
+                padding: 15px 20px;
+            }
+            header h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+            }
+            nav ul li a {
+                color: #fff;
+                font-size: 16px;
+            }
 
-    /* Container Layout */
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-    }
+            /* Container Layout */
+            .container {
+                max-width: 1200px;
+                margin: 20px auto;
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+            }
 
-    /* Main Content */
-    .main-content {
-      flex: 1;
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .stock-header {
-      border-bottom: 1px solid #e5e5e5;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      text-align: left;
-    }
-    .stock-header h2 {
-      font-size: 28px;
-    }
-    .stock-price {
-      font-size: 36px;
-      font-weight: bold;
-    }
-    .stock-change {
-      font-size: 20px;
-      margin-left: 10px;
-    }
-    .stock-change.up {
-      color: #28a745;
-    }
-    .stock-change.down {
-      color: #dc3545;
-    }
+            /* Main Content */
+            .main-content {
+                flex: 1;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+            .stock-header {
+                border-bottom: 1px solid #e5e5e5;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+            .stock-header h2 {
+                font-size: 28px;
+            }
+            .stock-price {
+                font-size: 36px;
+                font-weight: bold;
+            }
+            .stock-change {
+                font-size: 20px;
+                margin-left: 10px;
+            }
+            .stock-change.up {
+                color: #28a745;
+            }
+            .stock-change.down {
+                color: #dc3545;
+            }
 
-    /* Graph Section with Line Graph */
-    .chart {
-      width: 100%;
-      height: 300px;
-      background: #e0e0e0;
-      border-radius: 5px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-    .chart svg {
-      width: 100%;
-      height: 100%;
-    }
+            /* Graph Section with Line Graph */
+            .chart {
+                width: 100%;
+                height: 300px;
+                background: #e0e0e0;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                position: relative;
+            }
+            .chart svg {
+                width: 100%;
+                height: 100%;
+            }
 
-    /* Stock Details */
-    .stock-details {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-      border-top: 1px solid #e5e5e5;
-      padding-top: 20px;
-    }
-    .detail {
-      text-align: center;
-    }
-    .detail h3 {
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-    .detail p {
-      font-size: 16px;
-      color: #666;
-    }
+            /* Stock Details */
+            .stock-details {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 20px;
+                border-top: 1px solid #e5e5e5;
+                padding-top: 20px;
+            }
+            .detail {
+                text-align: center;
+            }
+            .detail h3 {
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+            .detail p {
+                font-size: 16px;
+                color: #666;
+            }
 
-    /* Trade Buttons */
-    .trade-buttons {
-      text-align: center;
-      margin-top: 30px;
-    }
-    .buy-button {
-      background-color: #007bff;
-      border: none;
-      padding: 15px 40px;
-      font-size: 20px;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-right: 10px;
-    }
-    .buy-button:hover {
-      background-color: #0056b3;
-    }
-    .sell-button {
-      background-color: #dc3545;
-      border: none;
-      padding: 15px 40px;
-      font-size: 20px;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .sell-button:hover {
-      background-color: #b21f2d;
-    }
+            /* Trade Buttons */
+            .trade-buttons {
+                text-align: center;
+                margin-top: 30px;
+            }
+            .buy-button {
+                background-color: #007bff;
+                border: none;
+                padding: 15px 40px;
+                font-size: 20px;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                margin-right: 10px;
+            }
+            .buy-button:hover {
+                background-color: #0056b3;
+            }
+            .sell-button {
+                background-color: #dc3545;
+                border: none;
+                padding: 15px 40px;
+                font-size: 20px;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            .sell-button:hover {
+                background-color: #b21f2d;
+            }
 
-    /* Sidebar */
-    .sidebar {
-      width: 300px;
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      height: fit-content;
-      text-align: left;
-    }
-    .sidebar h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #e5e5e5;
-      padding-bottom: 5px;
-    }
-    .sidebar ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .sidebar li {
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
+            /* Sidebar */
+            .sidebar {
+                width: 300px;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                height: fit-content;
+                text-align: left;
+            }
+            .sidebar h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #e5e5e5;
+                padding-bottom: 5px;
+            }
+            .sidebar ul {
+                list-style: none;
+                padding-left: 0;
+            }
+            .sidebar li {
+                margin-bottom: 8px;
+                font-size: 14px;
+            }
 
-    /* Disclaimer (outside container) */
-    .disclaimer {
-      max-width: 1200px;
-      margin: 20px auto;
-      color: #777;
-      font-size: 12pt;
-      line-height: 1.4;
-      padding: 0 20px;
-      text-align: left;
-    }
+            /* Disclaimer (outside container) */
+            .disclaimer {
+                max-width: 1200px;
+                margin: 20px auto;
+                color: #777;
+                font-size: 12pt;
+                line-height: 1.4;
+                padding: 0 20px;
+                text-align: left;
+            }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #f2f2f2;
-      color: #777;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-    footer hr {
-      margin: 15px 0;
-      border: none;
-      border-top: 1px solid #ccc;
-    }
+            /* Footer */
+            footer {
+                text-align: center;
+                padding: 10px;
+                background-color: #f2f2f2;
+                color: #777;
+                margin-top: 20px;
+                font-size: 14px;
+            }
+            footer hr {
+                margin: 15px 0;
+                border: none;
+                border-top: 1px solid #ccc;
+            }
 
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 10;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-    .modal-content {
-      background-color: white;
-      margin: 15% auto;
-      padding: 20px;
-      width: 50%;
-      text-align: center;
-      border-radius: 8px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    .modal-content button {
-      margin: 10px;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    .yes-btn {
-      background-color: #28a745;
-      color: white;
-      border: none;
-    }
-    .no-btn {
-      background-color: #dc3545;
-      color: white;
-      border: none;
-    }
-    .success-message {
-      display: none;
-      color: green;
-      margin-top: 20px;
-      font-size: 18px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Very Good Trading Platform</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Markets</a></li>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Research</a></li>
-      </ul>
-    </nav>
-  </header>
+            /* Modal Styles */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 10;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            .modal-content {
+                background-color: white;
+                margin: 15% auto;
+                padding: 20px;
+                width: 50%;
+                text-align: center;
+                border-radius: 8px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .modal-content button {
+                margin: 10px;
+                padding: 10px 20px;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+            .yes-btn {
+                background-color: #28a745;
+                color: white;
+                border: none;
+            }
+            .no-btn {
+                background-color: #dc3545;
+                color: white;
+                border: none;
+            }
+            .success-message {
+                display: none;
+                color: green;
+                margin-top: 20px;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Very Good Trading Platform</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Markets</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Research</a></li>
+                </ul>
+            </nav>
+        </header>
 
-  <div class="container">
-    <div class="main-content">
-      <div class="stock-header">
-        <h2>Tesla Inc. (TSLA)</h2>
-        <div class="stock-price">
-          $750.00
-          <span class="stock-change up">+2.50% (+$18.75)</span>
-        </div>
-      </div>
+        <div class="container">
+            <div class="main-content">
+                <div class="stock-header">
+                    <h2>Tesla Inc. (TSLA)</h2>
+                    <div class="stock-price">
+                        $750.00
+                        <span class="stock-change up">+2.50% (+$18.75)</span>
+                    </div>
+                </div>
 
-      <!-- Line Graph with X & Y Axes, Numbers & Dates -->
-      <div class="chart">
-        <svg viewBox="0 0 600 300">
-          <!-- X Axis -->
-          <line x1="50" y1="280" x2="550" y2="280" stroke="#333" stroke-width="2" />
-          <!-- Y Axis -->
-          <line x1="50" y1="20" x2="50" y2="280" stroke="#333" stroke-width="2" />
+                <!-- Line Graph with X & Y Axes, Numbers & Dates -->
+                <div class="chart">
+                    <svg viewBox="0 0 600 300">
+                        <!-- X Axis -->
+                        <line
+                            x1="50"
+                            y1="280"
+                            x2="550"
+                            y2="280"
+                            stroke="#333"
+                            stroke-width="2"
+                        />
+                        <!-- Y Axis -->
+                        <line
+                            x1="50"
+                            y1="20"
+                            x2="50"
+                            y2="280"
+                            stroke="#333"
+                            stroke-width="2"
+                        />
 
-          <!-- X Axis Labels (Dates) -->
-          <text x="50" y="295" font-size="12" text-anchor="middle">Jan 1</text>
-          <text x="150" y="295" font-size="12" text-anchor="middle">Feb 1</text>
-          <text x="250" y="295" font-size="12" text-anchor="middle">Mar 1</text>
-          <text x="350" y="295" font-size="12" text-anchor="middle">Apr 1</text>
-          <text x="450" y="295" font-size="12" text-anchor="middle">May 1</text>
-          <text x="550" y="295" font-size="12" text-anchor="middle">Jun 1</text>
+                        <!-- X Axis Labels (Dates) -->
+                        <text
+                            x="50"
+                            y="295"
+                            font-size="12"
+                            text-anchor="middle"
+                        >
+                            Jan 1
+                        </text>
+                        <text
+                            x="150"
+                            y="295"
+                            font-size="12"
+                            text-anchor="middle"
+                        >
+                            Feb 1
+                        </text>
+                        <text
+                            x="250"
+                            y="295"
+                            font-size="12"
+                            text-anchor="middle"
+                        >
+                            Mar 1
+                        </text>
+                        <text
+                            x="350"
+                            y="295"
+                            font-size="12"
+                            text-anchor="middle"
+                        >
+                            Apr 1
+                        </text>
+                        <text
+                            x="450"
+                            y="295"
+                            font-size="12"
+                            text-anchor="middle"
+                        >
+                            May 1
+                        </text>
+                        <text
+                            x="550"
+                            y="295"
+                            font-size="12"
+                            text-anchor="middle"
+                        >
+                            Jun 1
+                        </text>
 
-          <!-- Y Axis Labels (Numbers) -->
-          <text x="45" y="280" font-size="12" text-anchor="end">700</text>
-          <text x="45" y="220" font-size="12" text-anchor="end">720</text>
-          <text x="45" y="160" font-size="12" text-anchor="end">740</text>
-          <text x="45" y="100" font-size="12" text-anchor="end">760</text>
-          <text x="45" y="40"  font-size="12" text-anchor="end">780</text>
+                        <!-- Y Axis Labels (Numbers) -->
+                        <text x="45" y="280" font-size="12" text-anchor="end">
+                            700
+                        </text>
+                        <text x="45" y="220" font-size="12" text-anchor="end">
+                            720
+                        </text>
+                        <text x="45" y="160" font-size="12" text-anchor="end">
+                            740
+                        </text>
+                        <text x="45" y="100" font-size="12" text-anchor="end">
+                            760
+                        </text>
+                        <text x="45" y="40" font-size="12" text-anchor="end">
+                            780
+                        </text>
 
-          <!-- Spiky Line Graph -->
-          <polyline fill="none" stroke="#ff5733" stroke-width="2"
-            points="
+                        <!-- Spiky Line Graph -->
+                        <polyline
+                            fill="none"
+                            stroke="#ff5733"
+                            stroke-width="2"
+                            points="
               50,200 70,220 90,180 110,240 130,160 150,260 170,150 190,270 210,170 230,250
               250,190 270,230 290,210 310,160 330,240 350,200 370,220 390,180 410,260
-              430,170 450,250 470,190 490,230 510,210 530,240 550,200" />
-        </svg>
-      </div>
+              430,170 450,250 470,190 490,230 510,210 530,240 550,200"
+                        />
+                    </svg>
+                </div>
 
-      <div class="stock-details">
-        <div class="detail">
-          <h3>Day High</h3>
-          <p>$760.00</p>
+                <div class="stock-details">
+                    <div class="detail">
+                        <h3>Day High</h3>
+                        <p>$760.00</p>
+                    </div>
+                </div>
+                <!-- First Modal -->
+                <div id="firstModal" class="modal">
+                    <div class="modal-content">
+                        <h2>
+                            We detected you might be experiencing irrational
+                            emotions.
+                        </h2>
+                        <p id="emotion">Before</p>
+                        <p id="gcp_emotion">gcp_emotion</p>
+                        <button class="yes-btn" onclick="showRecordingPopup()">
+                            Yes
+                        </button>
+                        <button class="no-btn" onclick="cancelPurchase()">
+                            No
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recording pop-up -->
+                <div id="recordingModal" class="modal">
+                    <div class="modal-content">
+                        <h2>Recording in Progress</h2>
+                        <p>Please speak your thoughts clearly.</p>
+                        <p id="recordingStatus"></p>
+                        <button id="startButton" onclick="startRecording()">
+                            Start Recording
+                        </button>
+                        <button id="stopButton" onclick="stopRecording()">
+                            Stop Recording
+                        </button>
+                        <button class="no-btn" onclick="cancelRecording()">
+                            Cancel
+                        </button>
+                        <button id="lastConfirmButton" style="visibility: hidden;" onclick="() => {
+                            document.getElementById('recordingModal').style.display = 'none';
+                            document.getElementById('finalModal').style.display = 'block';
+                        }">
+                            Confirm Buy Stock
+                        </button>
+                        <p id="status"></p>
+                    </div>
+                </div>
+
+                <!-- Second pop-up -->
+                <div id="finalModal" class="modal">
+                    <div class="modal-content">
+                        <h2>Are you sure?</h2>
+                        <button class="yes-btn" onclick="redirectToSuccess()">
+                            Yes
+                        </button>
+                        <button class="no-btn" onclick="cancelPurchase()">
+                            No
+                        </button>
+                    </div>
+                    <div class="detail">
+                        <h3>Day Low</h3>
+                        <p>$740.00</p>
+                    </div>
+                    <div class="detail">
+                        <h3>Volume</h3>
+                        <p>25M</p>
+                    </div>
+                    <div class="detail">
+                        <h3>Market Cap</h3>
+                        <p>$750B</p>
+                    </div>
+                </div>
+
+                <div class="trade-buttons">
+                    <!-- BUY button now triggers the purchase modals -->
+                    <button class="buy-button" onclick="showFirstPopup()">
+                        BUY
+                    </button>
+                    <button class="sell-button">SELL</button>
+                </div>
+
+                <p id="successMessage" class="success-message">
+                    Successfully stopped the user from making an irrational
+                    purchase.
+                </p>
+            </div>
+
+            <div class="sidebar">
+                <h3>Recent News</h3>
+                <ul>
+                    <li>
+                        <a href="#"
+                            >Tesla announces breakthrough in battery technology.
+                            Elon Musk explodes while testing technology.</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            >Analysts upgrade TSLA amid mideocre Q1 results.</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            >Expansion plans reveal new Gigafactory in Jupiter
+                            and Mars.</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            >Four investors found dead after attempting to visit
+                            new outer space Tela factories.</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            >New model reveal sparks investor excitement.</a
+                        >
+                    </li>
+                </ul>
+                <h3>Market Overview</h3>
+                <ul>
+                    <li>S&P 500: 4,500.00 (+0.8%)</li>
+                    <li>NASDAQ: 15,000.00 (+1.2%)</li>
+                    <li>Dow Jones: 35,000.00 (+0.5%)</li>
+                </ul>
+            </div>
         </div>
-        <div class="detail">
-          <h3>Day Low</h3>
-          <p>$740.00</p>
+
+        <!-- Disclaimer below the container -->
+        <div class="disclaimer">
+            <p>
+                <b
+                    >Before investing in any mutual fund or exchange-traded
+                    fund, you should consider its investment objectives, risks,
+                    charges, and expenses. Contact Fidelity for a prospectus, an
+                    offering circular, or, if available, a summary prospectus
+                    containing this information. Read it carefully.</b
+                >
+            </p>
+            <br />
+            <p>Investing involves risk, including risk of total loss.</p>
+            <p>
+                Stock markets are volatile and can fluctuate significantly in
+                response to company, industry, political, regulatory, market, or
+                economic developments.
+            </p>
+            <br />
+            <p>
+                Crypto as an asset class is highly volatile, can become illiquid
+                at any time, and is for investors with a high-risk tolerance.
+                Crypto may also be more susceptible to market manipulation than
+                securities. Crypto is not insured by the Federal Deposit
+                Insurance Corporation or the Securities Investor Protection
+                Corporation. Investors in crypto do not benefit from the same
+                regulatory protections applicable to registered securities.
+            </p>
+            <br />
+            <p>
+                As with all your investments through Fidelity, you must make
+                your own determination whether an investment in any particular
+                asset is consistent with your investment objectives, risk
+                tolerance, financial situation, and evaluation of the security.
+                Fidelity is not recommending or endorsing these investments by
+                making them available to its customers.
+            </p>
+            <p>
+                Foreign securities are subject to interest-rate,
+                currency-exchange-rate, economic, and political risks, all of
+                which are magnified in emerging markets.
+            </p>
+            <br />
+            <p>
+                Illiquidity is an inherent risk associated with investing in
+                real estate and REITs. There is no guarantee the issuer of a
+                REIT will maintain the secondary market for its shares and
+                redemptions may be at a price which is more or less than the
+                original price paid. Partnerships issue a Schedule K-1 (Form
+                1065) rather than a Form 1099 form for tax purposes. It lists
+                the partner's share of income, deductions, credits, etc. Speak
+                with your tax advisor to determine how this may affect you. A
+                royalty trust is a type of corporation, mostly in the United
+                States or Canada, usually involved in oil and gas production or
+                mining. Royalty trusts may have special tax treatment, so you
+                should consult a tax advisor on the potential tax consequences
+                of investing in them.
+            </p>
+            <p>
+                Crypto prices and market reference data that Fidelity Digital
+                Asset Services, LLC makes available to you are compiled and
+                aggregated by a third party (Coin Metrics) based on criteria set
+                by Fidelity Digital Asset Services, LLC. Fidelity Digital Asset
+                Services, LLC does not represent, warrant or guarantee that
+                pricing and other market information, or value estimates based
+                on that information, is accurate, complete, timely or suitable
+                for use. Prices of crypto that are displayed to you are for
+                reference only and should not be relied upon as the price for
+                any trade; execution prices for your trades may be different
+                than reference prices and estimates displayed to you. Pricing
+                and other market information may appear and be used with a time
+                delay, and Fidelity Digital Asset Services, LLC will have no
+                liability to you for the decisions you make based on market
+                reference data made available by Fidelity Digital Asset
+                Services, LLC. Coin Metrics is a trademark Coin Metrics Inc.
+            </p>
+            <br />
+            <p>
+                Any data, charts and other information provided on this page are
+                intended for research purposes to help self-directed investors
+                evaluate many types of securities or digital assets including,
+                but not limited to common stocks, American Depository Receipts,
+                Master Limited Partnerships, real estate investment trusts,
+                traditional preferred stock, trust preferred securities,
+                third-party trust certificates, convertible securities,
+                mandatory convertible securities and other exchange-traded
+                equity and/or debt securities. Criteria and inputs entered,
+                including the choice to make security or digital asset
+                comparisons, are at the sole discretion of the user and are
+                solely for the convenience of the user. Analyst opinions,
+                ratings and reports are provided by third-parties unaffiliated
+                with Fidelity. All information supplied or obtained from this
+                page is for informational purposes only and should not be
+                considered investment advice or guidance, an offer of or a
+                solicitation of an offer to buy or sell a security or digital
+                asset, or a recommendation or endorsement by Fidelity of any
+                security, digital asset or investment strategy. Fidelity does
+                not endorse or adopt any particular investment strategy, any
+                analyst opinion/rating/report or any approach to evaluating
+                individual securities or digital assets. Fidelity makes no
+                guarantees that information supplied is accurate, complete, or
+                timely, and does not provide any warranties regarding results
+                obtained from its use.
+            </p>
+            <p>
+                ETFs are subject to market fluctuation and the risks of their
+                underlying investments. ETFs are subject to management fees and
+                other expenses. Unlike mutual funds, ETF shares are bought and
+                sold at market price, which may be higher or lower than their
+                NAV, and are not individually redeemed from the fund.
+            </p>
+            <br />
         </div>
-        <div class="detail">
-          <h3>Volume</h3>
-          <p>25M</p>
-        </div>
-        <div class="detail">
-          <h3>Market Cap</h3>
-          <p>$750B</p>
-        </div>
-      </div>
+        <script>
+            var mediaRecorder;
+            var recordedChunks = [];
 
-      <div class="trade-buttons">
-        <!-- BUY button now triggers the purchase modals -->
-        <button class="buy-button" onclick="showFirstPopup()">BUY</button>
-        <button class="sell-button">SELL</button>
-      </div>
+            const startRecording = async () => {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        audio: true,
+                    });
+                    mediaRecorder = new MediaRecorder(stream, {
+                        mimeType: "audio/webm",
+                    });
 
-      <p id="successMessage" class="success-message">
-        Successfully stopped the user from making an irrational purchase.
-      </p>
-    </div>
+                    recordedChunks = []; // Clear previous recordings
 
-    <div class="sidebar">
-      <h3>Recent News</h3>
-      <ul>
-        <li><a href="#">Tesla announces breakthrough in battery technology. Elon Musk explodes while testing technology.</a></li>
-        <li><a href="#">Analysts upgrade TSLA amid mideocre Q1 results.</a></li>
-        <li><a href="#">Expansion plans reveal new Gigafactory in Jupiter and Mars.</a></li>
-        <li><a href="#">Four investors found dead after attempting to visit new outer space Tela factories.</a></li>
-        <li><a href="#">New model reveal sparks investor excitement.</a></li>
-      </ul>
-      <h3>Market Overview</h3>
-      <ul>
-        <li>S&P 500: 4,500.00 (+0.8%)</li>
-        <li>NASDAQ: 15,000.00 (+1.2%)</li>
-        <li>Dow Jones: 35,000.00 (+0.5%)</li>
-      </ul>
-    </div>
-  </div>
+                    mediaRecorder.ondataavailable = (event) => {
+                        recordedChunks.push(event.data);
+                    };
 
-  <!-- Disclaimer below the container -->
-  <div class="disclaimer">
-    <p><b>Before investing in any mutual fund or exchange-traded fund, you should consider its investment objectives, risks, charges, and expenses. Contact Fidelity for a prospectus, an offering circular, or, if available, a summary prospectus containing this information. Read it carefully.</b></p>
-    <br>
-    <p>Investing involves risk, including risk of total loss.</p>
-    <p>Stock markets are volatile and can fluctuate significantly in response to company, industry, political, regulatory, market, or economic developments.</p>
-    <br>
-    <p>Crypto as an asset class is highly volatile, can become illiquid at any time, and is for investors with a high-risk tolerance. Crypto may also be more susceptible to market manipulation than securities. Crypto is not insured by the Federal Deposit Insurance Corporation or the Securities Investor Protection Corporation. Investors in crypto do not benefit from the same regulatory protections applicable to registered securities.</p>
-    <br>
-    <p>As with all your investments through Fidelity, you must make your own determination whether an investment in any particular asset is consistent with your investment objectives, risk tolerance, financial situation, and evaluation of the security. Fidelity is not recommending or endorsing these investments by making them available to its customers.</p>
-    <p>Foreign securities are subject to interest-rate, currency-exchange-rate, economic, and political risks, all of which are magnified in emerging markets.</p>
-    <br>
-    <p>Illiquidity is an inherent risk associated with investing in real estate and REITs. There is no guarantee the issuer of a REIT will maintain the secondary market for its shares and redemptions may be at a price which is more or less than the original price paid. Partnerships issue a Schedule K-1 (Form 1065) rather than a Form 1099 form for tax purposes. It lists the partner's share of income, deductions, credits, etc. Speak with your tax advisor to determine how this may affect you. A royalty trust is a type of corporation, mostly in the United States or Canada, usually involved in oil and gas production or mining. Royalty trusts may have special tax treatment, so you should consult a tax advisor on the potential tax consequences of investing in them.</p>
-    <p>Crypto prices and market reference data that Fidelity Digital Asset Services, LLC makes available to you are compiled and aggregated by a third party (Coin Metrics) based on criteria set by Fidelity Digital Asset Services, LLC. Fidelity Digital Asset Services, LLC does not represent, warrant or guarantee that pricing and other market information, or value estimates based on that information, is accurate, complete, timely or suitable for use. Prices of crypto that are displayed to you are for reference only and should not be relied upon as the price for any trade; execution prices for your trades may be different than reference prices and estimates displayed to you. Pricing and other market information may appear and be used with a time delay, and Fidelity Digital Asset Services, LLC will have no liability to you for the decisions you make based on market reference data made available by Fidelity Digital Asset Services, LLC. Coin Metrics is a trademark Coin Metrics Inc.</p>
-    <br>
-    <p>Any data, charts and other information provided on this page are intended for research purposes to help self-directed investors evaluate many types of securities or digital assets including, but not limited to common stocks, American Depository Receipts, Master Limited Partnerships, real estate investment trusts, traditional preferred stock, trust preferred securities, third-party trust certificates, convertible securities, mandatory convertible securities and other exchange-traded equity and/or debt securities. Criteria and inputs entered, including the choice to make security or digital asset comparisons, are at the sole discretion of the user and are solely for the convenience of the user. Analyst opinions, ratings and reports are provided by third-parties unaffiliated with Fidelity. All information supplied or obtained from this page is for informational purposes only and should not be considered investment advice or guidance, an offer of or a solicitation of an offer to buy or sell a security or digital asset, or a recommendation or endorsement by Fidelity of any security, digital asset or investment strategy. Fidelity does not endorse or adopt any particular investment strategy, any analyst opinion/rating/report or any approach to evaluating individual securities or digital assets. Fidelity makes no guarantees that information supplied is accurate, complete, or timely, and does not provide any warranties regarding results obtained from its use.</p>
-    <p>ETFs are subject to market fluctuation and the risks of their underlying investments. ETFs are subject to management fees and other expenses. Unlike mutual funds, ETF shares are bought and sold at market price, which may be higher or lower than their NAV, and are not individually redeemed from the fund.</p>
-    <br>
-  </div>
+                    mediaRecorder.onstop = async () => {
+                        console.log("Recording stopped");
+                        const audioBlob = new Blob(recordedChunks, {
+                            type: "audio/webm",
+                        });
+                        recordedChunks = []; // Reset chunks after stopping
+                        const formData = new FormData();
+                        formData.append("audio", audioBlob, "recording.webm");
 
-  <footer>
-    <p>&copy; 2025 Very Good Trading Platform</p>
-    <hr>
-  </footer>
+                        try {
+                            const response = await fetch("/upload_audio", {
+                                method: "POST",
+                                body: formData,
+                            })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    console.log("Data: ", data);
+                                    document.getElementById("status").textContent =
+                                    "Audio uploaded successfully!";
+                                    document.getElementById(
+                                        "recordingStatus"
+                                    ).innerText = data.audio_emotion;
+                                });
+                        } catch (error) {
+                            console.error("Error uploading audio:", error);
+                            document.getElementById("status").textContent =
+                                "Upload failed.";
+                        }
+                    };
 
-  <!-- First Modal -->
-  <div id="firstModal" class="modal">
-    <div class="modal-content">
-      <h2>We detected you might be experiencing irrational emotions.</h2>
-      <p>Do you still want to make the purchase?</p>
-      <p id="emotion">Before</p>
-      <p id="gcp_emotion">gcp_emotion</p>
-      <button class="yes-btn" onclick="showFinalPopup()">Yes</button>
-      <button class="no-btn" onclick="cancelPurchase()">No</button>
-    </div>
-  </div>
+                    // Disable start button, enable stop button
+                    document.getElementById("startButton").disabled = true;
+                    document.getElementById("stopButton").disabled = false;
 
-  <!-- Second Modal -->
-  <div id="finalModal" class="modal">
-    <div class="modal-content">
-      <h2>Are you sure?</h2>
-      <button class="yes-btn" onclick="redirectToSuccess()">Yes</button>
-      <button class="no-btn" onclick="cancelPurchase()">No</button>
-    </div>
-  </div>
+                    mediaRecorder.start();
+                    console.log(
+                        "MediaRecorder started, state:",
+                        mediaRecorder.state
+                    );
 
-  <script>
-    function showFirstPopup() {
-      console.log("Fetching data...");
-      fetch("/get_emotion")
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById("emotion").innerText = data.emotion;
-          document.getElementById("gcp_emotion").innerText = data.gcp_emotion;
-        })
-        .catch(error => {
-          console.error("Error:", error);
-          document.getElementById("emotion").innerText = "Failed to fetch data.";
-        });
-      document.getElementById("firstModal").style.display = "block";
-    }
+                    // Automatically stop after 5 seconds (for testing)
+                    setTimeout(() => {
+                        if (mediaRecorder.state === "recording") {
+                            stopRecording();
+                        }
+                    }, 5000);
+                } catch (error) {
+                    console.error("Error accessing microphone:", error);
+                }
+            };
 
-    function showFinalPopup() {
-      document.getElementById("firstModal").style.display = "none";
-      document.getElementById("finalModal").style.display = "block";
-    }
+            const stopRecording = () => {
+                console.log("Stop recording called");
+                if (mediaRecorder && mediaRecorder.state === "recording") {
+                    mediaRecorder.stop();
+                    console.log("MediaRecorder stopped");
 
-    function redirectToSuccess() {
-      window.location.href = "/success"; // Redirect to the success page
-    }
+                    // Enable start button, disable stop button
+                    document.getElementById("startButton").disabled = false;
+                    document.getElementById("stopButton").disabled = true;
+                }
+            };
 
-    function cancelPurchase() {
-      document.getElementById("firstModal").style.display = "none";
-      document.getElementById("finalModal").style.display = "none";
+            const uploadRecording = async () => {
+                if (recordedChunks.length === 0) {
+                    alert("No recording available to upload.");
+                    return;
+                }
 
-      let successMessage = document.getElementById("successMessage");
-      successMessage.style.display = "block";
+                const audioBlob = new Blob(recordedChunks, {
+                    type: "audio/wav",
+                });
+                const formData = new FormData();
+                formData.append("audio", audioBlob, "recording.wav");
 
-      // Hide the success message after 2 seconds
-      setTimeout(() => {
-        successMessage.style.display = "none";
-      }, 2000);
-    }
-  </script>
-</body>
+                try {
+                    const response = await fetch("/upload_audio", {
+                        method: "POST",
+                        body: formData,
+                    });
+
+                    if (response.ok) {
+                        document.getElementById("status").textContent =
+                            "Audio uploaded successfully!";
+                        document.getElementById(
+                            "recordingModal"
+                        ).style.display = "none";
+                        console.log("Response: ", response.ok);
+                        document.getElementById("recordingStatus").innerText =
+                            response.json().predicted_emotion;
+                        document.getElementById("lastConfirmButton").style.visibility = "visible";
+                    } else {
+                        document.getElementById("status").textContent =
+                            "Upload failed.";
+                    }
+                } catch (error) {
+                    console.error("Error uploading audio:", error);
+                    document.getElementById("status").textContent =
+                        "Upload failed.";
+                }
+            };
+
+            function cancelRecording() {
+                document.getElementById("recordingModal").style.display =
+                    "none";
+                document.getElementById("firstModal").style.display = "block";
+                recordedChunks = []; // Reset recorded chunks
+            }
+
+            function showRecordingPopup() {
+                document.getElementById("firstModal").style.display = "none";
+                document.getElementById("recordingModal").style.display =
+                    "block";
+            }
+        </script>
+
+        <footer>
+            <p>&copy; 2025 Very Good Trading Platform</p>
+            <hr />
+        </footer>
+
+        <script>
+            function showFirstPopup() {
+                console.log("Fetching data...");
+                fetch("/get_emotion")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        document.getElementById("emotion").innerText =
+                            data.emotion;
+                        document.getElementById("gcp_emotion").innerText =
+                            data.gcp_emotion;
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        document.getElementById("emotion").innerText =
+                            "Failed to fetch data.";
+                    });
+                document.getElementById("firstModal").style.display = "block";
+            }
+
+            function redirectToSuccess() {
+                window.location.href = "/success"; // Redirect to the success page
+            }
+
+            function cancelPurchase() {
+                document.getElementById("firstModal").style.display = "none";
+                document.getElementById("finalModal").style.display = "none";
+
+                let successMessage = document.getElementById("successMessage");
+                successMessage.style.display = "block";
+
+                // Hide the success message after 2 seconds
+                setTimeout(() => {
+                    successMessage.style.display = "none";
+                }, 2000);
+            }
+        </script>
+    </body>
 </html>

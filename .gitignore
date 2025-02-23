@@ -9,3 +9,11 @@ facial-emotion-model/raw-data/*
 flask/images/*.jpg
 flask/images-cropped/*.png
 flask/images-drawn/*.jpg
+
+*.json
+
+*.jpg
+
+*.png
+
+*.pth
