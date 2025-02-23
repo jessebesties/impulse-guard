@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11acab09-86ac-4cab-aaef-dab8ee4593e7" name="Changes" comment="some refactoring">
-      <change afterPath="$PROJECT_DIR$/.idea/hacklytics_25.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask/templates/purchase.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask/templates/purchase.html" afterDir="false" />
@@ -74,25 +72,6 @@
       <recent name="$PROJECT_DIR$/static/images" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="hacklytics_25" type="Python.FlaskServer">
-      <module name="hacklytics_25" />
-      <option name="target" value="$PROJECT_DIR$/app.py" />
-      <option name="targetType" value="PATH" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (mysite)" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -114,7 +93,7 @@
       <workItem from="1740209896765" duration="1330000" />
       <workItem from="1740265263954" duration="740000" />
       <workItem from="1740266011475" duration="1161000" />
-      <workItem from="1740267182030" duration="3129000" />
+      <workItem from="1740267182030" duration="5725000" />
     </task>
     <task id="LOCAL-00001" summary="change of folder name for gc face recgonition">
       <option name="closed" value="true" />

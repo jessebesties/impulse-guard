@@ -56,17 +56,17 @@ def capture_photo():
 
 @app.route('/upload_audio', methods=['POST'])
 def upload_audio():
-    print("Uploading audio...")
-
     if "audio" not in request.files:
+        print("No audio file in request")
         return jsonify({"error": "No audio file"}), 400
 
     audio_file = request.files["audio"]
 
     if audio_file.filename == '':
+        print("No file selected")
         return jsonify({"error": "No selected file"}), 400
 
-    input_path = os.path.join('uploads', audio_file.filename)
+    input_path = os.path.join('uploads', "recording_" + datetime.now().strftime("%Y%m%d%H%M%S") + ".wav")
     try:
         audio_file.save(input_path)
         print(f"File saved to {input_path}")

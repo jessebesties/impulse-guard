@@ -95,18 +95,6 @@
         </p>
     </div>
 
-    <!-- Recording pop-up -->
-        <div id="recordingModal" class="modal">
-            <div class="modal-content">
-                <h2>Please record your response</h2>
-                <p>Say: "I am perfectly calm and rational."</p>
-                <button id="startButton" onclick="startRecording()">Start Recording</button>
-                <button id="stopButton">Stop Recording</button> <!-- Updated button -->
-                <p id="status"></p> <!-- To display upload status -->
-                <button class="yes-btn" onclick="uploadRecording()">Submit Recording</button>
-                <button class="no-btn" onclick="cancelRecording()">Cancel</button>
-            </div>
-        </div>
     <!-- First pop-up -->
     <div id="firstModal" class="modal">
         <div class="modal-content">
@@ -114,6 +102,18 @@
             <p>Do you still want to make the purchase?</p>
             <button class="yes-btn" onclick="showRecordingPopup()">Yes</button>
             <button class="no-btn" onclick="cancelPurchase()">No</button>
+        </div>
+    </div>
+
+    <!-- Recording pop-up -->
+    <div id="recordingModal" class="modal">
+        <div class="modal-content">
+            <h2>Recording in Progress</h2>
+            <p>Please speak your thoughts clearly.</p>
+            <button id="startButton" onclick="startRecording()">Start Recording</button>
+            <button id="stopButton" onclick="stopRecording()">Stop Recording</button>
+            <button class="no-btn" onclick="cancelRecording()">Cancel</button>
+            <p id="status"></p>
         </div>
     </div>
 
@@ -143,9 +143,27 @@
 
                 mediaRecorder.onstop = async () => {
                     const audioBlob = new Blob(recordedChunks, { type: "audio/wav" });
-                    const audioUrl = URL.createObjectURL(audioBlob);
-                    const audio = new Audio(audioUrl);
-                    audio.play();
+                    recordedChunks = [];  // Reset chunks after stopping
+                    const formData = new FormData();
+                    formData.append("audio", audioBlob, "recording.wav");
+
+                    try {
+                        const response = await fetch("/upload_audio", {
+                            method: "POST",
+                            body: formData,
+                        });
+
+                        if (response.ok) {
+                            document.getElementById("status").textContent = "Audio uploaded successfully!";
+                            setTimeout(() => {
+                                redirectToSuccess();
+                            }, 1000);
+                        }
+
+                    } catch (error) {
+                        console.error("Error uploading audio:", error);
+                        document.getElementById("status").textContent = "Upload failed.";
+                    }
                 };
 
                 // Disable start button, enable stop button
@@ -178,9 +196,6 @@
             }
         };
 
-        document.getElementById("stopButton").addEventListener("click", stopRecording);
-
-
         const uploadRecording = async () => {
             if (recordedChunks.length === 0) {
                 alert("No recording available to upload.");
@@ -199,7 +214,8 @@
 
                 if (response.ok) {
                     document.getElementById("status").textContent = "Audio uploaded successfully!";
-                    redirectToSuccess(); // Redirect to success page
+                    document.getElementById("recordingModal").style.display = "none";
+                    redirectToSuccess();
                 } else {
                     document.getElementById("status").textContent = "Upload failed.";
                 }
@@ -216,8 +232,15 @@
         }
 
         function showFirstPopup() {
-            document.getElementById("firstModal").style.display = "block";
+            console.log("Opening first modal"); // Debugging
+            let modal = document.getElementById("firstModal");
+            if (!modal) {
+                console.error("firstModal not found in DOM");
+                return;
+            }
+            modal.style.display = "block";
         }
+
 
         function showRecordingPopup() {
             document.getElementById("firstModal").style.display = "none";
