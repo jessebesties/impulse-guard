@@ -86,10 +86,6 @@
 </head>
 <body>
 
-    <div class="video-container">
-        <img src="{{ url_for('video_feed') }}" alt="Live Video Feed" style="width:100%; max-width:400px; border-radius:10px; margin-bottom:20px;">
-    </div>
-
     <div class="container">
         <h1>Best Sunscreen</h1>
         <img src="{{ url_for('static', filename='images/item.jpg') }}" alt="Product Image">
@@ -99,12 +95,24 @@
         </p>
     </div>
 
+    <!-- Recording pop-up -->
+        <div id="recordingModal" class="modal">
+            <div class="modal-content">
+                <h2>Please record your response</h2>
+                <p>Say: "I am perfectly calm and rational."</p>
+                <button id="startButton" onclick="startRecording()">Start Recording</button>
+                <button id="stopButton">Stop Recording</button> <!-- Updated button -->
+                <p id="status"></p> <!-- To display upload status -->
+                <button class="yes-btn" onclick="uploadRecording()">Submit Recording</button>
+                <button class="no-btn" onclick="cancelRecording()">Cancel</button>
+            </div>
+        </div>
     <!-- First pop-up -->
     <div id="firstModal" class="modal">
         <div class="modal-content">
             <h2>We detected you might be experiencing irrational emotions.</h2>
             <p>Do you still want to make the purchase?</p>
-            <button class="yes-btn" onclick="showFinalPopup()">Yes</button>
+            <button class="yes-btn" onclick="showRecordingPopup()">Yes</button>
             <button class="no-btn" onclick="cancelPurchase()">No</button>
         </div>
     </div>
@@ -119,13 +127,101 @@
     </div>
 
     <script>
+        var mediaRecorder;
+        var recordedChunks = [];
+
+        const startRecording = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream, { mimeType: "audio/wav" });
+
+                recordedChunks = []; // Clear previous recordings
+
+                mediaRecorder.ondataavailable = (event) => {
+                    recordedChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(recordedChunks, { type: "audio/wav" });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    const audio = new Audio(audioUrl);
+                    audio.play();
+                };
+
+                // Disable start button, enable stop button
+                document.getElementById("startButton").disabled = true;
+                document.getElementById("stopButton").disabled = false;
+
+                mediaRecorder.start();
+                console.log("MediaRecorder started, state:", mediaRecorder.state);
+
+                // Automatically stop after 5 seconds (for testing)
+                setTimeout(() => {
+                    if (mediaRecorder.state === "recording") {
+                        stopRecording();
+                    }
+                }, 5000);
+            } catch (error) {
+                console.error("Error accessing microphone:", error);
+            }
+        };
+
+        const stopRecording = () => {
+            console.log("Stop recording called");
+            if (mediaRecorder && mediaRecorder.state === "recording") {
+                mediaRecorder.stop();
+                console.log("MediaRecorder stopped");
+
+                // Enable start button, disable stop button
+                document.getElementById("startButton").disabled = false;
+                document.getElementById("stopButton").disabled = true;
+            }
+        };
+
+        document.getElementById("stopButton").addEventListener("click", stopRecording);
+
+
+        const uploadRecording = async () => {
+            if (recordedChunks.length === 0) {
+                alert("No recording available to upload.");
+                return;
+            }
+
+            const audioBlob = new Blob(recordedChunks, { type: "audio/wav" });
+            const formData = new FormData();
+            formData.append("audio", audioBlob, "recording.wav");
+
+            try {
+                const response = await fetch("/upload_audio", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    document.getElementById("status").textContent = "Audio uploaded successfully!";
+                    redirectToSuccess(); // Redirect to success page
+                } else {
+                    document.getElementById("status").textContent = "Upload failed.";
+                }
+            } catch (error) {
+                console.error("Error uploading audio:", error);
+                document.getElementById("status").textContent = "Upload failed.";
+            }
+        };
+
+        function cancelRecording() {
+            document.getElementById("recordingModal").style.display = "none";
+            document.getElementById("firstModal").style.display = "block";
+            recordedChunks = []; // Reset recorded chunks
+        }
+
         function showFirstPopup() {
             document.getElementById("firstModal").style.display = "block";
         }
 
-        function showFinalPopup() {
+        function showRecordingPopup() {
             document.getElementById("firstModal").style.display = "none";
-            document.getElementById("finalModal").style.display = "block";
+            document.getElementById("recordingModal").style.display = "block";
         }
 
         function redirectToSuccess() {
