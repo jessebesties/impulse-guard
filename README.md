@@ -1,5 +1,5 @@
 # Impulse Guard
-[DevPost][https://devpost.com/software/stress-6m2pl9]
+[DevPost](https://devpost.com/software/stress-6m2pl9)
 
 ## Inspiration
 Have you ever made a rash decision and later realized it was the wrong choice? That’s why we present to you Stress Manager—an application designed to help you make more thoughtful decisions by analyzing your stress levels.
